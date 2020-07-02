@@ -9,9 +9,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
-COPY "source/eShopOnContainers.sln" "eShopOnContainers.sln"
-COPY "source/Services/Catalog/Catalog.API/Catalog.API.csproj" "Services/Catalog/Catalog.API/Catalog.API.csproj"
-RUN dotnet restore "Services/Catalog/Catalog.API/Catalog.API.csproj"
+COPY "./source/eShopOnContainers.sln" "./eShopOnContainers.sln"
+COPY "./source/Services/Catalog/Catalog.API/Catalog.API.csproj" "./Services/Catalog/Catalog.API/Catalog.API.csproj"
+RUN dotnet restore "./Services/Catalog/Catalog.API/Catalog.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Catalog/Catalog.API"
 RUN dotnet build "Catalog.API.csproj" -c Release -o /app/build
